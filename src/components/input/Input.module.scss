@@ -1,0 +1,38 @@
+.input_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    position: relative;
+    input::placeholder{
+        opacity: 50%;
+    }
+}
+.input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 25px;
+    padding-left: 20px;
+    border: none;
+}
+.gradient{
+    background: linear-gradient(270deg, #3548F5 -4.17%, #F58747 110.83%);
+    border-radius: 25px;
+    display: flex;
+    height: 45px;
+    width: 300px;
+    margin-bottom: 16px;
+    padding: 2px;
+    display: inline-block;
+    outline: none;
+}
+.label{
+    text-align: left;
+    margin-bottom: 5px;
+    margin-left: 22px;
+    color: #989797;
+    font-weight: bold;
+    font-size: 14px;
+}
