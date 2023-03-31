@@ -87,7 +87,8 @@
     cursor: pointer;
     @extend %base;
     color: #ffffff;
-    background: linear-gradient(270deg, #3548F5 -4.17%, #F58747 110.83%);
+    background: rgb(25,25,129);
+// background: linear-gradient(227deg, rgba(25,25,129,1) 0%, rgba(35,35,43,1) 75%);
     //box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.3);
     // >>>>>>> dev-z
 }

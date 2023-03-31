@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import { removeCookie, setCookie } from "../../utils/cookieFunction/cookieFunction";
 import {requests} from "../api";
 
 const initialState = {
@@ -8,10 +9,13 @@ const initialState = {
 export const postAuth = createAsyncThunk(
     'auth/postAuth',
     async (data) => {
-        const res = await requests.authApi(data.authData);
-        console.log("first", res.data);
-        // setCookie("user_info", JSON.stringify(res.data), 100);
-        // setCookie("access", JSON.stringify(res.data.access), 100);
+        console.log("second", data)
+        const res = await requests.authApi(data.values);
+        console.log("auth", res.data);
+        debugger
+        setCookie("refresh", JSON.stringify(res.data.refresh), 1);
+        setCookie("access", JSON.stringify(res.data.access), 0.3);
+        data.navigate('/main/profile')
         // localStorage.setItem('userId', res.data.user_id)
         // localStorage.setItem("token", res.data.access)
         return res.data;

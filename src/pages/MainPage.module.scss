@@ -14,10 +14,22 @@
     }
 }
 
-.container {
+.container{
     max-width: 1440px;
     width: 100%;
-    position: relative;
+    display: flex;
     margin: 0 auto;
-    padding: 50px 0 0 0;
+    padding: 30px;
+    position: relative;
+    .navbar{
+        flex: 0.9;
+        min-width: 260px;
+        margin-right: 30px;
+        // overflow-y: scroll;
+        // height: 80vh;
+    }
+    .content{
+        flex:4.1;
+        padding-top: 10px;
+    }
 }
