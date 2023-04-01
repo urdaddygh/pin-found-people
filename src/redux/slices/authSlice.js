@@ -9,15 +9,16 @@ const initialState = {
 export const postAuth = createAsyncThunk(
     'auth/postAuth',
     async (data) => {
-        console.log("second", data)
+        localStorage.removeItem('access')
         const res = await requests.authApi(data.values);
-        console.log("auth", res.data);
-        debugger
-        setCookie("refresh", JSON.stringify(res.data.refresh), 1);
-        setCookie("access", JSON.stringify(res.data.access), 0.3);
+
+        setCookie("refresh", res.data.refresh, 300);
+        setCookie("access", res.data.access, 100);
+        // console.log("access", res.data);
+
         data.navigate('/main/profile')
-        // localStorage.setItem('userId', res.data.user_id)
-        // localStorage.setItem("token", res.data.access)
+        localStorage.setItem('user_id', res.data.user_id)
+
         return res.data;
     }
 );

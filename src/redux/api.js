@@ -21,5 +21,5 @@ const fetchAPI = axios.create({
 export const requests = {
     authApi:(data)=>fetchAPINoToken.post("login/", data),
 
-    getUsers:(data)=>fetchAPI.get("user-profile/", data),
+    getUsers:(id)=>fetchAPI.get(`user-profile/${id}/`),
 }

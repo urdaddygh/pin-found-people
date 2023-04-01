@@ -24,16 +24,16 @@ export const NavBar = () => {
      
         <div className={s.cont}>
           <NavLink
-            to="/main/defaultEvents/allDefaultEvents"
-            className={linkActiveClassName("defaultEvents")}
+            to="/main/serviceOne"
+            className={linkActiveClassName("serviceOne")}
           >
             <span className={s.top_curve}></span>
             Сервис 1
             <span className={s.bottom_curve}></span>
           </NavLink>
           <NavLink
-            to="/main/news/all_news"
-            className={linkActiveClassName("news")}
+            to="/main/serviceTwo"
+            className={linkActiveClassName("serviceTwo")}
           >
             <span className={s.top_curve}></span>
             Сервис 2

@@ -8,20 +8,21 @@ import Input from "../../components/input/Input";
 // import { editUser, getUserForProfilePage } from "../../redux/slices/userSlice";
 import SuccessModal from "../../components/modals/SuccessModal";
 
+
 const Profile = () => {
   const dispatch = useDispatch()
-  const users = useSelector(state=>state.users.users)
-  // console.log(users);
+  const user = useSelector(state=>state.users.usersInfo)
+  console.log(user);
 
   useEffect(()=>{
-    dispatch(getUsers())
+    const id = localStorage.getItem('user_id')
+    // console.log(id)
+    dispatch(getUsers(id))
   },[])
 
   const [openSuccessModal, setOpenSuccessModal] = useState(false);
   const handleOpenSuccessModal = () => setOpenSuccessModal(true);
   const handleCloseSuccessModal = () => setOpenSuccessModal(false);
-  // const user = useSelector(state=>state.user)
-  // console.log(user)
 
   const [pass, setPass] = useState({})
   const onChange = (value)=>{
@@ -29,7 +30,11 @@ const Profile = () => {
   }
   const formik = useFormik({
     initialValues: {
-
+      pin:user.pin,
+      allName:user.surname + ' ' +user.name + ' ' +user.lastname,
+      birth:user.date_of_birth,
+      user_type:user.user_type,
+      branch:user.branch
   },
   enableReinitialize:true,
     onSubmit: (values) => {
@@ -65,38 +70,45 @@ const Profile = () => {
         <p>Личные данные</p>
         <form onSubmit={formik.handleSubmit}>
           <Input
-            valueLabel="Имя"
-            value={formik.values.name}
+            valueLabel="ФИО"
+            value={formik.values.allName === null? "Нет данных":formik.values.allName}
             onChange={formik.handleChange}
-            name="name"
+            name="allName"
             type="text"
             width="600px"
           />
           <Input
-            valueLabel="Фамилия"
-            value={formik.values.surname}
+            valueLabel="Пин"
+            value={formik.values.pin === null? "Нет данных":formik.values.pin}
             type="text"
             onChange={formik.handleChange}
-            name="surname"
+            name="pin"
             width="600px"
           />
           <Input
-            valueLabel="Номер телефона"
-            value={formik.values.number}
+            valueLabel="Дата рождения"
+            value={formik.values.birth === null? "Нет данных":formik.values.birth}
             onChange={formik.handleChange}
             width="600px"
-            name="number"
+            name="birth"
           />
           <Input
-            valueLabel="Почта"
-            value={formik.values.email}
+            valueLabel="Филиал"
+            value={formik.values.branch === null? "Нет данных":formik.values.branch}
             onChange={formik.handleChange}
             width="600px"
-            name="email"
-            type="email"
+            name="branch"
+          />
+          <Input
+            valueLabel="Роль"
+            value={formik.values.user_type === null? "Нет данных":formik.values.user_type}
+            onChange={formik.handleChange}
+            width="600px"
+            name="user_type"
           />
           <div className="relative">
           {/* <img src={eye===true?open_eye:close_eye} onClick={foggle} className="pass"/> */}
+          
           </div>
           {state === true ? (
             <Button

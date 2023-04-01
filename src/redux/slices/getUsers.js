@@ -3,16 +3,16 @@ import { requests } from "../api";
 
 
 const initialState = {
-    users: [],
+    usersInfo: [],
     error:{}
   };
   
 export const getUsers = createAsyncThunk(
     "users/getUsers",
-    async function(_,{ rejectWithValue}){
+    async function(id,{ rejectWithValue}){
       try {
-        const res = await requests.getUsers();
-        console.log(res)
+        // console.log(id)
+        const res = await requests.getUsers(id);
         if (!res) {
           throw new Error("ERROR");
         }
@@ -42,7 +42,7 @@ export const getUsers = createAsyncThunk(
       },
       [getUsers.fulfilled]: (state, action) => {
         state.status = "resolved";
-        state.users = action.payload;
+        state.usersInfo = action.payload;
         // console.log("fullfiled");
       },
       [getUsers.rejected]: (state, action) => {

@@ -65,7 +65,7 @@ const Auth = () => {
     },
 
     onSubmit: (values) => {
-      console.log(values);
+      // console.log(values);
       let data = { values, navigate };
       dispatch(postAuth(data));
     },
