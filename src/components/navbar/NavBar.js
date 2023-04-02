@@ -28,7 +28,7 @@ export const NavBar = () => {
             className={linkActiveClassName("serviceOne")}
           >
             <span className={s.top_curve}></span>
-            Сервис 1
+            Место жительство 
             <span className={s.bottom_curve}></span>
           </NavLink>
           <NavLink
@@ -36,7 +36,7 @@ export const NavBar = () => {
             className={linkActiveClassName("serviceTwo")}
           >
             <span className={s.top_curve}></span>
-            Сервис 2
+            Семейное положение
             <span className={s.bottom_curve}></span>
           </NavLink>
           <NavLink
@@ -44,7 +44,7 @@ export const NavBar = () => {
             className={linkActiveClassName("profile")}
           >
             <span className={s.top_curve}></span>
-            Профиль
+            Личный кабинет
             <span className={s.bottom_curve}></span>
           </NavLink>
           {/* <NavLink

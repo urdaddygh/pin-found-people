@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useRef } from "react";
 import s from "./ServiceTwo.module.scss";
 import { useFormik } from "formik";
 import Input from "../../components/input/Input";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/button/Button";
+import { postGetFamily } from "../../redux/slices/citizenInfo";
+import { useReactToPrint } from "react-to-print";
 
 const ServiceTwo = () => {
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
+
+  const family = useSelector((state) => state.sitizen.family);
+  console.log(family);
 
   const formik = useFormik({
     initialValues: {
@@ -15,10 +20,19 @@ const ServiceTwo = () => {
 
     onSubmit: (values) => {
       console.log(values);
-      let data = { values };
-      // dispatch(postAuth(data));
+      dispatch(postGetFamily(values));
     },
   });
+
+
+  const compRef = useRef()
+
+  const handlePrint = useReactToPrint({
+    content:()=>compRef.current
+  })
+
+
+
   return (
     <div className={s.cont}>
       <p>Поиск информации о семейном положении гражданина</p>
@@ -29,7 +43,30 @@ const ServiceTwo = () => {
         type="number"
         onChange={formik.handleChange}
       />
-      <Button type="submit" disabled={!formik.values.pin} text="ПОИСК" />
+
+      <div>
+      <Button
+        type="submit"
+        disabled={!formik.values.pin}
+        text="ПОИСК"
+        onClick={formik.handleSubmit}
+        margin="0 20px 0 0"
+      />
+      <Button  text="Распечатать" onClick={handlePrint} />
+      </div>
+      <div ref={compRef}>
+      {family === null ? (
+        <p>Гражданин не найден</p>
+      ) : (
+        family.map((el, index) => (
+          <div className={s.info_cont} key={index}>
+            <p>ФИО: {el.name}</p>
+            <p>ПИН: {el.pin}</p>
+            <p>Роль: {el.role}</p>
+          </div>
+        ))
+      )}
+      </div>
     </div>
   );
 };

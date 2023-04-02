@@ -22,4 +22,7 @@ export const requests = {
     authApi:(data)=>fetchAPINoToken.post("login/", data),
 
     getUsers:(id)=>fetchAPI.get(`user-profile/${id}/`),
+
+    postGetAdress:(data)=>fetchAPI.post("citizen-address-info/", data),
+    postGetFamily:(data)=>fetchAPI.post("citizen-family-info/", data),
 }

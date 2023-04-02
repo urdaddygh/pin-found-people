@@ -60,7 +60,7 @@ const Profile = () => {
       <div className={s.header}>
         <p className={s.first_p}>Мой профиль</p>
         {state === false ? (
-          <Button text="ИЗМЕНИТЬ ДАННЫЕ" margin="0 0" onClick={toggle} />
+          <Button text="ИЗМЕНИТЬ ПАРОЛЬ" margin="0 0" onClick={toggle} />
         ) : (
           <></>
         )}
