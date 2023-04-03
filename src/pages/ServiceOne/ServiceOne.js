@@ -50,7 +50,7 @@ const ServiceOne = () => {
             <p>Регион: {adress.adress.region}</p>
           </div>
 
-        <Button disabled={!adress.adress.state} text="Распечатать" onClick={handlePrint} />
+        <Button disabled={!adress.adress.state} text="Распечатать" onClick={handlePrint} margin="0 20px 0 0"/>
         <Button type="submit" disabled={!formik.values.pin} text="ПОИСК" />
       </form>
     </div>

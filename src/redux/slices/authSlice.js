@@ -4,6 +4,7 @@ import {requests} from "../api";
 
 const initialState = {
     error: false,
+    password:{}
 };
 
 export const postAuth = createAsyncThunk(
@@ -23,6 +24,18 @@ export const postAuth = createAsyncThunk(
     }
 );
 
+export const changePass = createAsyncThunk(
+    'auth/changePass',
+    async (data) => {
+        console.log("dsadsa", data)
+        const res = await requests.changePass(data.value);
+
+        console.log("change", res.data);
+        data.handleOpenSuccessModal()
+        return res.data;
+    }
+);
+
 const authSlice = createSlice({
     name: 'auth',
     initialState,
@@ -34,6 +47,17 @@ const authSlice = createSlice({
             state.error = false;
         },
         [postAuth.rejected]: (state) => {
+            state.error = true;
+        },
+
+        [changePass.pending]: (state) => {
+            state.error = false;
+        },
+        [changePass.fulfilled]: (state, action) => {
+            state.error = false;
+            state.password = action.payload
+        },
+        [changePass.rejected]: (state) => {
             state.error = true;
         },
     },

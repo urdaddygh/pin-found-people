@@ -25,4 +25,5 @@ export const requests = {
 
     postGetAdress:(data)=>fetchAPI.post("citizen-address-info/", data),
     postGetFamily:(data)=>fetchAPI.post("citizen-family-info/", data),
+    changePass:(data) =>fetchAPI.post("password-change", data),
 }
