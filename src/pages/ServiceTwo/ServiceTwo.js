@@ -58,13 +58,16 @@ const ServiceTwo = () => {
       {family === null ? (
         <p>Гражданин не найден</p>
       ) : (
-        family.map((el, index) => (
+        <>
+        <p>{formik.values.pin}</p>
+        {family.map((el, index) => (
           <div className={s.info_cont} key={index}>
             <p>ФИО: {el.name}</p>
             <p>ПИН: {el.pin}</p>
             <p>Роль: {el.role}</p>
           </div>
-        ))
+        ))}
+        </>
       )}
       </div>
     </div>

@@ -1,7 +1,8 @@
 import axios from "axios";
 import { getCookie } from "../utils/cookieFunction/cookieFunction";
 
-const access = getCookie("access")
+// const access = getCookie("access")
+const access = localStorage.getItem("access")
 
 const fetchAPINoToken = axios.create({
     baseURL: "http://172.30.4.27/",

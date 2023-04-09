@@ -16,7 +16,7 @@ export const NavBar = () => {
     const removeRole=()=>{
       // localStorage.removeItem('role')
       removeCookie("access")
-      console.log("remove cook")
+      removeCookie("refresh")
     }
 
   return (
@@ -47,7 +47,8 @@ export const NavBar = () => {
             Личный кабинет
             <span className={s.bottom_curve}></span>
           </NavLink>
-          {/* <NavLink
+
+           {/* <NavLink
             to="/main/protocol/all_protocols"
             className={linkActiveClassName("protocol")}
           >
@@ -91,11 +92,12 @@ export const NavBar = () => {
             <span className={s.top_curve}></span>
             Чат
             <span className={s.bottom_curve}></span>
-          </NavLink>
+          </NavLink> */}
 
           <NavLink to="/" className={s.exit} onClick={removeRole}>
             Выйти
-          </NavLink> */}
+          </NavLink> 
+         
         </div>
     </>
   );

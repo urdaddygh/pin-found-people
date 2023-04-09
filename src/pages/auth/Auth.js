@@ -13,9 +13,6 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -79,7 +76,7 @@ const Auth = () => {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          Sign in
+        Вход в систему
         </Typography>
         <form
           className={classes.form}
@@ -92,7 +89,7 @@ const Auth = () => {
             required
             fullWidth
             id="email"
-            label="Login"
+            label="ПИН"
             name="pin"
             value={formik.values.pin}
             // autoComplete="email"
@@ -107,15 +104,15 @@ const Auth = () => {
             onChange={formik.handleChange}
             fullWidth
             name="password"
-            label="Password"
+            label="Пароль"
             type="password"
             id="password"
             autoComplete="current-password"
           />
-          {authErr && <p className={s.wrongPass}>Wrong password or pin</p>}
+          {authErr && <p className={s.wrongPass}>Неправильный пароль или пин</p>}
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
+            label="Запомнить меня"
           />
           <Button
             type="submit"
@@ -124,59 +121,11 @@ const Auth = () => {
             color="primary"
             className={classes.submit}
           >
-            Sign In
+            Войти
           </Button>
-
-
-          {/* <Grid container>
-            <Grid item xs>
-            <Link href="#" variant="body2">
-              Forgot password?
-            </Link>
-          </Grid>
-            <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid> */}
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
     </Container>
-
-    // <div className={s.auth_cont}>
-    //   <form onSubmit={formik.handleSubmit}>
-    //     <Input
-    //       name="name"
-    //       value={formik.values.name}
-    //       type="text"
-    //       onChange={formik.handleChange}
-    //       placeholder="Введите логин"
-    //     />
-    //     <Input
-    //       name="password"
-    //       value={formik.values.password}
-    //       type="password"
-    //       onChange={formik.handleChange}
-    //       background={authErr && "red"}
-    //       placeholder="Введите пароль"
-    //     />
-    //     {authErr && <p className={s.wrongPass}>Такого аккаунта нет.</p>}
-    //     <Button
-    //       text="ВОЙТИ"
-    //       type="submit"
-    //       disabled={
-    //         !(
-    //           formik.values.password &&
-    //           formik.values.name
-    //         )
-    //       }
-    //     />
-    //   </form>
-    // </div>
   );
 };
 

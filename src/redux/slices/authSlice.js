@@ -10,14 +10,15 @@ const initialState = {
 export const postAuth = createAsyncThunk(
     'auth/postAuth',
     async (data) => {
-        localStorage.removeItem('access')
+        // localStorage.removeItem('access')
         const res = await requests.authApi(data.values);
 
         setCookie("refresh", res.data.refresh, 300);
         setCookie("access", res.data.access, 100);
-        // console.log("access", res.data);
+        localStorage.setItem("access", res.data.access)
+        // console.log("access", res.data); 
 
-        data.navigate('/main/profile')
+        data.navigate('/main/serviceOne')
         localStorage.setItem('user_id', res.data.user_id)
 
         return res.data;
