@@ -27,6 +27,7 @@ import radio_user__checked from "./radio_user__checked.svg"
 import radio_user__unchecked from "./radio_user__unchecked.svg"
 import applied_radio__checked from "./applied_radio__checked.svg"
 import applied_radio__uncheked from "./applied_radio__uncheked.svg"
+import logo from './logo.png'
 
 export {
     open_eye,
@@ -57,5 +58,6 @@ export {
     radio_user__checked,
     radio_user__unchecked,
     applied_radio__checked,
-    applied_radio__uncheked
+    applied_radio__uncheked,
+    logo
 }

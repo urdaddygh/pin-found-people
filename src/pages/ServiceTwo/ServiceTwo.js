@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import s from "./ServiceTwo.module.scss";
 import { useFormik } from "formik";
 import Input from "../../components/input/Input";
@@ -6,12 +6,26 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/button/Button";
 import { postGetFamily } from "../../redux/slices/citizenInfo";
 import { useReactToPrint } from "react-to-print";
+import { getUsers } from "../../redux/slices/getUsers";
+import moment from "moment";
 
 const ServiceTwo = () => {
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    const id = localStorage.getItem("user_id");
+    // console.log(id)
+    dispatch(getUsers(id));
+  }, []);
+
+
   const family = useSelector((state) => state.sitizen.family);
-  console.log(family);
+  const user = useSelector((state) => state.users.usersInfo);
+  const date = moment().format('MMMM Do YYYY, h:mm:ss a');
+
+  const [state, setState] = useState(false);
+
+  // console.log(family);
 
   const formik = useFormik({
     initialValues: {
@@ -23,7 +37,7 @@ const ServiceTwo = () => {
       dispatch(postGetFamily(values));
     },
   });
-
+  
 
   const compRef = useRef()
 
@@ -31,9 +45,14 @@ const ServiceTwo = () => {
     content:()=>compRef.current
   })
 
-
+  const handleClick =()=>{
+    setState(true)
+    setTimeout(() => handlePrint(), 10);
+    // handlePrint()
+  }
 
   return (
+    <>
     <div className={s.cont}>
       <p>Поиск информации о семейном положении гражданина</p>
       <Input
@@ -52,11 +71,14 @@ const ServiceTwo = () => {
         onClick={formik.handleSubmit}
         margin="0 20px 0 0"
       />
-      <Button  text="Распечатать" onClick={handlePrint} />
+      <Button  text="Распечатать" onClick={handleClick} />
       </div>
-      <div ref={compRef}>
+      
+    </div>
+
+    <div ref={compRef} className={s.cont_print}>
       {family === null ? (
-        <p>Гражданин не найден</p>
+        <p style={{color:"red"}}>Гражданин не найден</p>
       ) : (
         <>
         <p>Введённый ПИН: {formik.values.pin}</p>
@@ -69,8 +91,21 @@ const ServiceTwo = () => {
         ))}
         </>
       )}
+
+        {state ? (
+          <div className={s.operator_cont}>
+            <p>ПИН оператора: {user.pin}</p>
+            <p>
+              ФИО оператора:{" "}
+              {user.surname + " " + user.name + " " + user.lastname}
+            </p>
+            <p>дата и время: {date}</p>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
-    </div>
+    </>
   );
 };
 

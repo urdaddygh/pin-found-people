@@ -16,6 +16,7 @@ import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { logo } from "../../images";
 
 function Copyright() {
   return (
@@ -73,10 +74,12 @@ const Auth = () => {
 
   return (
     <Container component="main" maxWidth="xs">
+      <img src={logo} width="200px" height="100px" style={{margin:"100px auto 0 auto", display:"flex", justifyContent:"center"}}/>
+      <p style={{ textAlign:"center"}}>МИНИСТЕРСТВО ОБОРОНЫ КЫРГЫЗСКОЙ РЕСПУБЛИКИ</p>
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-        Вход в систему
+        Вход в систему MTN
         </Typography>
         <form
           className={classes.form}
