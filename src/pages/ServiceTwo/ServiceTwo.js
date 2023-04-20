@@ -78,10 +78,10 @@ const ServiceTwo = () => {
 
     <div ref={compRef} className={s.cont_print}>
       {family === null ? (
-        <p style={{color:"red"}}>Гражданин не найден</p>
+        <p className={s.pin} style={{color:"red"}}>Гражданин не найден</p>
       ) : (
         <>
-        <p>Введённый ПИН: {formik.values.pin}</p>
+        <p className={s.pin}>Введённый ПИН: {formik.values.pin}</p>
         {family.map((el, index) => (
           <div className={s.info_cont} key={index}>
             <p>ФИО: {el.name}</p>
