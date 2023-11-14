@@ -75,11 +75,11 @@ const Auth = () => {
   return (
     <Container component="main" maxWidth="xs">
       <img src={logo} width="200px" height="100px" style={{margin:"100px auto 0 auto", display:"flex", justifyContent:"center"}}/>
-      <p style={{ textAlign:"center"}}>МИНИСТЕРСТВО ОБОРОНЫ КЫРГЫЗСКОЙ РЕСПУБЛИКИ</p>
+      <p style={{ textAlign:"center"}}>ECLAIR</p>
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-        Вход в систему MTN
+        Вход в систему 
         </Typography>
         <form
           className={classes.form}
